@@ -25,9 +25,9 @@ const main = async () => {
   app.get("/biodata", (req, res) => {
     client.query(`SELECT * FROM bio`, (err, res) => {
       if (!err) {
-        console.log(res.rows);
+        res.json(res.rows);
       } else {
-        console.log(err.message);
+        res.json({error: err.message});
       }
       client.end;
     });
