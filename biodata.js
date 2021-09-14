@@ -23,13 +23,13 @@ const main = async () => {
   });
 
   app.get("/biodata", (req, res) => {
-    client.query(`SELECT * FROM bio`, (err, res) => {
-      if (!err) {
-        res.json(res.rows);
-      } else {
-        res.json({error: err.message});
-      }
+    client.query(`SELECT * FROM bio`, (err, response) => {
       client.end;
+      if (!err) {
+        return res.json(response.rows);
+      } else {
+        return res.json({error: err.message});
+      }
     });
   });
 
