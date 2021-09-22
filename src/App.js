@@ -28,29 +28,6 @@ import './style.css';
 
 const steps = ['Profile', 'Medical History', 'Skills', 'Employment History'];
 
-// function getStepContent(step) {
-//   switch (step) {
-//     case 0:
-//       return <AddressForm />;
-//     case 1:
-//       return <PaymentForm />;
-//     case 2:
-//       return <Review />;
-//     default:
-//       throw new Error('Unknown step');
-//   }
-// }
-
-// const [activeStep, setActiveStep] = React.useState(0);
-
-//   const handleNext = () => {
-//     setActiveStep(activeStep + 1);
-//   };
-
-//   const handleBack = () => {
-//     setActiveStep(activeStep - 1);
-//   };
-
 const Input = styled('input')({
   display: 'none',
 });
@@ -135,8 +112,6 @@ const FORM_VALIDATION = Yup.object().shape({
   aoc: Yup.string(),
   childcare: Yup.boolean(),
   elderlycare: Yup.boolean()
-    // .oneOf([true], 'The terms and conditions must be accepted.')
-    // .required('The terms and conditions must be accepted.'),
 });
 
 const App = () => {
@@ -150,7 +125,7 @@ const App = () => {
       <Typography variant="h5" style={{margin: '20px'}}>
           <b>Helper Form</b>
         </Typography>
-      <Stepper /*activeStep={activeStep}*/  style={{width: '100%', margin: '0 auto', display: "flex"}} alternativeLabel sx={{ pt: 3, pb: 5 }}>
+      <Stepper style={{width: '100%', margin: '0 auto', display: "flex"}} alternativeLabel sx={{ pt: 3, pb: 5 }}>
             {steps.map((label) => (
               <Step key={label}>
                 <StepLabel>{label}</StepLabel>
@@ -180,7 +155,8 @@ const App = () => {
                       label="Upload your photo"
                       multiple type="file"
                       accept="image/*"
-                      InputProps={{endAdornment: <Button multiple type="file">Upload</Button>}}
+                      InputLabelProps={{ shrink: true }}
+                      InputProps={{endAdornment: <Button accept="image/*" multiple type="file">Upload</Button>}}
                     />
                   </Grid>
 
