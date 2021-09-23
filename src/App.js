@@ -156,7 +156,7 @@ const App = () => {
                       multiple type="file"
                       accept="image/*"
                       InputLabelProps={{ shrink: true }}
-                      InputProps={{endAdornment: <Button accept="image/*" multiple type="file">Upload</Button>}}
+                      InputProps={{endAdornment: <Button variant='contained' accept="image/*" multiple type="file">Upload</Button>}}
                     />
                   </Grid>
 
