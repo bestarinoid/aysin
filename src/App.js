@@ -175,7 +175,7 @@ const App = () => {
 
                   <Grid item xs={6}>
                     <input
-                      name="photo"
+                    name="photo"
                       accept="image/*"
                       className={classes.input}
                       style={{ display: 'none' }}
@@ -210,7 +210,8 @@ const App = () => {
                   <Grid item xs={6}>
                     <Textfield
                       name="id"
-                      label="ID *"
+                      required
+                      label="ID"
                     />
                   </Grid>
 
@@ -224,7 +225,8 @@ const App = () => {
                   <Grid item xs={3}>
                     <Textfield
                       name="biofee"
-                      label="Bio Fee *"
+                      label="Bio Fee"
+                      required
                       type="number"
                       InputProps={{
                         startAdornment: <InputAdornment position="start">$</InputAdornment>,
@@ -235,7 +237,8 @@ const App = () => {
                   <Grid item xs={3}>
                     <Textfield
                       name="loan"
-                      label="Loan *"
+                      label="Loan"
+                      required
                       type="number"
                       InputProps={{
                         startAdornment: <InputAdornment position="start">$</InputAdornment>,
@@ -246,7 +249,8 @@ const App = () => {
                   <Grid item xs={3}>
                     <Textfield
                       name="pmoney"
-                      label="Pocket Money *"
+                      label="Pocket Money"
+                      required
                       type="number"
                       InputProps={{
                         startAdornment: <InputAdornment position="start">$</InputAdornment>,
@@ -257,7 +261,8 @@ const App = () => {
                   <Grid item xs={3}>
                     <Textfield
                       name="msalary"
-                      label="Minimum Salary *"
+                      label="Minimum Salary"
+                      required
                       type="number"
                       InputProps={{
                         startAdornment: <InputAdornment position="start">$</InputAdornment>,
@@ -307,7 +312,8 @@ const App = () => {
                   <Grid item xs={12}>
                     <Textfield
                       name="name"
-                      label="Full Name *"
+                      label="Full Name"
+                      required
                     />
                   </Grid>
 
@@ -321,14 +327,16 @@ const App = () => {
                   <Grid item xs={3}>
                     <Textfield
                       name="pob"
-                      label="Place of Birth *"
+                      label="Place of Birth"
+                      required
                     />
                   </Grid>
 
                   <Grid item xs={3}>
                     <Textfield
                       name="height"
-                      label="Height *"
+                      label="Height"
+                      required
                       type="number"
                       InputProps={{
                         endAdornment: <InputAdornment position="end">cm</InputAdornment>,
@@ -339,7 +347,8 @@ const App = () => {
                   <Grid item xs={3}>
                     <Textfield
                       name="weight"
-                      label="Weight *"
+                      label="Weight"
+                      required
                       InputProps={{
                         endAdornment: <InputAdornment position="end">kg</InputAdornment>,
                       }}
@@ -349,7 +358,8 @@ const App = () => {
                   <Grid item xs={6}>
                     <Select
                       name="nationality"
-                      label="Nationality *"
+                      label="Nationality"
+                      required
                       options={nation}
                     />
                   </Grid>
@@ -357,28 +367,32 @@ const App = () => {
                   <Grid item xs={6}>
                     <Textfield
                       name="phone"
-                      label="Phone Number *"
+                      label="Phone Number"
+                      required
                     />
                   </Grid>
 
                   <Grid item xs={12}>
                     <Textfield
                       name="address"
-                      label="Residential Address *"
+                      label="Residential Address"
+                      required
                     />
                   </Grid>
 
                   <Grid item xs={6}>
                     <Textfield
                       name="port"
-                      label="Name of Port / Airport To Be Repatriated To *"
+                      label="Name of Port / Airport To Be Repatriated To"
+                      required
                     />
                   </Grid>
 
                   <Grid item xs={6}>
                     <Select
                       name="religion"
-                      label="Religion *"
+                      label="Religion"
+                      required
                       options={relig}
                     />
                   </Grid>
@@ -386,7 +400,8 @@ const App = () => {
                   <Grid item xs={6}>
                     <Textfield
                       name="edu"
-                      label="Education Level *"
+                      label="Education Level"
+                      required
                     />
                   </Grid>
 
