@@ -175,6 +175,7 @@ const App = () => {
 
                   <Grid item xs={6}>
                     <input
+                      name="photo"
                       accept="image/*"
                       className={classes.input}
                       style={{ display: 'none' }}
