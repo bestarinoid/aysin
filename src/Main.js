@@ -17,29 +17,46 @@ import Second from './Second';
 import Third from './Third';
 import Employees from './Employees';
 
-const steps = ['Profile', 'Medical History', 'Skills', 'Employment History'];
-
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <App />;
-    case 1:
-      return <Second />;
-    case 2:
-      return <Third />;
-    case 3:
-        return <Employees />;
-    default:
-      throw new Error('Unknown step');
-  }
-}
-
-const theme = createTheme();
-
 export default function Main() {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [linkVideo, setLinkVideo] = React.useState('');
+  const [fullName, setFullName] = React.useState('');
+  const [fullNameError, setFullNameError] = React.useState('');
+
+  const steps = ['Profile', 'Medical History', 'Skills', 'Employment History'];
+
+  function getStepContent(step) {
+    switch (step) {
+      case 0:
+        return <App
+          linkVideo={linkVideo}
+          setLinkVideo={setLinkVideo}
+          fullName={fullName}
+          setFullName={setFullName}
+          fullNameError={fullNameError} />;
+      case 1:
+        return <Second />;
+      case 2:
+        return <Third />;
+      case 3:
+        return <Employees />;
+      default:
+        throw new Error('Unknown step');
+    }
+  }
 
   const handleNext = () => {
+    let ret = true;
+    if (activeStep === 0) {
+      if (!fullName || !fullName.trim()) {
+        setFullNameError('Please enter Full name');
+        ret = false;
+      }
+    }
+
+    if (!ret) {
+      return;
+    }
     setActiveStep(activeStep + 1);
   };
 
@@ -48,48 +65,48 @@ export default function Main() {
   };
 
   return (
-      <Container component="main">
-        <Typography component="h1" variant="h5">
-            <b>Helper Form</b>
-          </Typography>
-        <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-          
-          <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
-            {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-          <React.Fragment>
-            {activeStep === steps.length ? (
-              <React.Fragment>
-                <Typography variant="h5" gutterBottom>
-                  Form Submitted
-                </Typography>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                {getStepContent(activeStep)}
-                <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                  {activeStep !== 0 && (
-                    <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                      Back
-                    </Button>
-                  )}
+    <Container component="main">
+      <Typography component="h1" variant="h5">
+        <b>Helper Form</b>
+      </Typography>
+      <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
 
-                  <Button
-                    variant="contained"
-                    onClick={handleNext}
-                    sx={{ mt: 3, ml: 1 }}
-                  >
-                    {activeStep === steps.length - 1 ? 'Confirm' : 'Next'}
+        <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
+          {steps.map((label) => (
+            <Step key={label}>
+              <StepLabel>{label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
+        <React.Fragment>
+          {activeStep === steps.length ? (
+            <React.Fragment>
+              <Typography variant="h5" gutterBottom>
+                Form Submitted
+              </Typography>
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              {getStepContent(activeStep)}
+              <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                {activeStep !== 0 && (
+                  <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+                    Back
                   </Button>
-                </Box>
-              </React.Fragment>
-            )}
-          </React.Fragment>
-        </Paper>
-      </Container>
+                )}
+
+                <Button
+                  variant="contained"
+                  onClick={handleNext}
+                  sx={{ mt: 3, ml: 1 }}
+                >
+                  {activeStep === steps.length - 1 ? 'Confirm' : 'Next'}
+                </Button>
+              </Box>
+            </React.Fragment>
+          )}
+        </React.Fragment>
+      </Paper>
+    </Container>
   );
 }

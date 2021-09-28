@@ -102,8 +102,11 @@ const FORM_VALIDATION = Yup.object().shape({
   elderlycare: Yup.boolean()
 });
 
-const App = () => {
+const App = (props) => {
   const classes = useStyles();
+
+  const { linkVideo, setLinkVideo } = props;
+  const { fullName, setFullName, fullNameError } = props;
 
   return (
     <Grid container>
@@ -139,8 +142,6 @@ const App = () => {
                       <Textfield
                         name="photo"
                         label="Upload your photo"
-                        multiple type="file"
-                        accept="image/*"
                         InputLabelProps={{ shrink: true }}
                         InputProps={{
                           endAdornment: <Button variant="contained" component="span" className={classes.button}>
@@ -156,6 +157,8 @@ const App = () => {
                     <Textfield
                       name="video"
                       label="Link Video"
+                      value={linkVideo}
+                      onChange={event => setLinkVideo(event.target.value)}
                     />
                   </Grid>
 
@@ -265,6 +268,10 @@ const App = () => {
                     <Textfield
                       name="name"
                       label="Full Name"
+                      error={fullNameError !== ''}
+                      helperText={fullNameError}
+                      value={fullName}
+                      onChange={event => setFullName(event.target.value)}
                       required
                     />
                   </Grid>
